@@ -2,8 +2,8 @@ const express = require('express');
 const axios = require('axios');
 const requestIp = require('request-ip');
 const app = express();
-const port = 3000;
 
+const port = process.env.PORT || 3000;
 // Middleware to get the client's IP address
 app.use(requestIp.mw());
 

@@ -19,13 +19,13 @@ app.get('/api/hello', async (req, res) => {
     try {
         let location = 'Unknown';
 
-        // Use ipinfo.io to get the location of the requester based on the IP address, if available
+        // ipinfo.io to get the location of the requester based on the IP address, if available
         if (clientIp) {
             const locationResponse = await axios.get(`https://ipinfo.io/${clientIp}/json?token=e6c539ae6f905d`);
             location = locationResponse.data.city || 'Unknown';
         }
 
-        // Use OpenWeatherMap to get the temperature for the city
+        //OpenWeatherMap API to get the current temperature in the location
         const weatherResponse = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=98d479a425d1a70b61341c8f8b615126`);
         const temperature = weatherResponse.data.main.temp;
 
